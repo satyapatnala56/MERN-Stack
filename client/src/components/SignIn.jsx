@@ -6,9 +6,10 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useNavigate } from 'react-router-dom';
 
 export default function FormDialog({open,handleClose}) {
-
+  const navigate = useNavigate()
   return (
     <div>
       <Dialog open={open} onClose={handleClose}>
@@ -35,6 +36,7 @@ export default function FormDialog({open,handleClose}) {
         <Button onClick={handleClose}
         fullWidth
         variant="contained"
+        onClick={(e)=>navigate('/user')}
         >Continue</Button>
         </DialogContent>
         <DialogActions>
