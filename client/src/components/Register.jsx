@@ -1,20 +1,13 @@
 import React from 'react';
-import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register({open,handleClose}) {
     const navigate = useNavigate()
-    // const handleSubmit = (e)=>{
-    //     e.preventDefault();
-    //     console.log('wewgekuhk')
-    //     // navigate('user')
-    // }
   return (
     <div>
       <Dialog open={open} onClose={handleClose}>
@@ -71,11 +64,6 @@ export default function Register({open,handleClose}) {
         variant="contained"
         >Continue</Button>
         </DialogContent>
-        {/* <DialogActions> */}
-          {/* <Checkbox defaultChecked/>Remember Me */}
-          {/* <Link href></Link> */}
-          {/* <Button onClick={handleClose}>Forgot password</Button> */}
-        {/* </DialogActions> */}
       </Dialog>
     </div>
   );

@@ -33,7 +33,7 @@ export default function FormDialog({open,handleClose}) {
           fullWidth
           variant="standard"
         /><br />
-        <Button onClick={handleClose}
+        <Button
         fullWidth
         variant="contained"
         onClick={(e)=>navigate('/user')}

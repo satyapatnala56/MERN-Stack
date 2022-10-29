@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Button from 'react-bootstrap/esm/Button'
 
 function ImageAdder({open,close,add,setAdd}) {
-    const [image,setImage] = useState()
+    const [ima,setImage] = useState()
     const handleClose = () =>{
         close(false)
     }
@@ -11,11 +11,10 @@ function ImageAdder({open,close,add,setAdd}) {
     <div>
         <Dialog open={open} onClose={handleClose}>
             <input type='text' onChange={(e)=>setImage(e.target.value)} />
-            {/* <Button variant='success' onClick={()=>}> </Button> */}
-            {image && <div>
-                <img src={image} />
+            {ima && <div>
+                <img src={ima} alt='Added one'/>
                 <Button variant='success' onClick={()=>{
-                    setAdd(...add,image)
+                    setAdd(...add,ima)
                 }}>Add this</Button>
                 </div>}
         </Dialog>

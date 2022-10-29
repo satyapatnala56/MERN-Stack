@@ -6,7 +6,6 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 function UserNav() {
@@ -17,8 +16,6 @@ function UserNav() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-        {/* <Nav.Link>Auction</Nav.Link> */}
-
         </Nav>
         <Nav>
           <Nav.Link href='user/home'>
@@ -26,31 +23,14 @@ function UserNav() {
           </Nav.Link>
           <Nav.Link>
           <MailOutlineIcon color='inherit' />
-            
             </Nav.Link>
             <Nav.Link href='save'>
           <FavoriteBorderIcon color='inherit' />
-            
             </Nav.Link>
-          {/* <Nav.Link>
-          <AccountCircleIcon color='inherit' />
-          <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-            </Nav.Link> */}
                 <Dropdown align='end'>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
       <AccountCircleIcon color='inherit' />
       </Dropdown.Toggle>
-
       <Dropdown.Menu>
         <Dropdown.Item href="profile">Profile</Dropdown.Item>
         <Dropdown.Item href="myarts">My Arts</Dropdown.Item>

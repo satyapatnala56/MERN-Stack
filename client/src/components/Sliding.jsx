@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; 
 
 function Sliding() {
-  // const red = [1,2,3,4,5,6]
   const red =[
     'https://images.unsplash.com/photo-1617503752587-97d2103a96ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29sb3IlMjBhcnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
     'https://images.unsplash.com/photo-1558865869-c93f6f8482af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29sb3IlMjBhcnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
@@ -24,10 +23,8 @@ function Sliding() {
         infinite: true,
         centerPadding: "60px",
         speed: 500,
-        // centerPadding: "60px",
         slidesToShow:4,
         swipeToSlide: true,
-        // slidesToScroll: 3,
         afterChange: function(index) {
             console.log(
               `Slider Changed to: ${index + 1}, background: #222; color: #bada55`

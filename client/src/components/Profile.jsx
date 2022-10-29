@@ -1,8 +1,7 @@
-import { Card } from '@mui/material'
 import React from 'react'
 import Footer from '../parts/Footer'
 import UserNav from '../parts/userNav'
-import { BorderDiv, ContainedDiv, DpImage, FlexDiv, FullImg, GridImg, ImgSupp, Killimg, ProfileDiv } from '../stlying/styles'
+import { BorderDiv, ContainedDiv, DpImage, FlexDiv, GridImg, ImgSupp, Killimg, ProfileDiv } from '../stlying/styles'
 
 function Profile() {
     const red =[
@@ -41,8 +40,7 @@ function Profile() {
             
         </ContainedDiv>
         <Footer />
-    </div>
-  )
+    </div>)
 }
 
 export default Profile

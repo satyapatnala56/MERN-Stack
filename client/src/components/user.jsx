@@ -1,5 +1,3 @@
-// import { Card } from '@mui/material'
-// import DummyCard from '../parts/Card'
 import React from 'react'
 import UserNav from '../parts/userNav'
 import "slick-carousel/slick/slick.css"; 
@@ -11,19 +9,12 @@ import Footer from '../parts/Footer';
 import { Card } from '@mui/material';
 
 function User() {
-
   return (
     <>
       <UserNav />
-
-          {/* <FlexDiv> */}
-          {/* <ShadowDiv > */}
             <Card style={{marginTop:20,padding:20,marginLeft:50,marginRight:50,backgroundColor:'#d3dce6'}}>
-            {/* <h1>Hi karthik</h1> */}
             <Greet />
             </Card>
-          {/* </ShadowDiv> */}
-          {/* </FlexDiv> */}
           <CenterDiv >
       <ShadowDiv>
         <Styledh1>Most Sold Out <Reddata>Arts</Reddata></Styledh1>
@@ -37,13 +28,9 @@ function User() {
         <Styledh1><Reddata>Arts </Reddata>you may be Intersted</Styledh1>
       <Sliding />
       </ShadowDiv>
-           
-     {/* <Trail /> */}
-    </CenterDiv>
+      </CenterDiv>
     <Footer />
-    </>
-
-  )
+    </>)
 }
 
 const Greet = () =>{

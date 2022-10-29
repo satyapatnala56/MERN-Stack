@@ -20,10 +20,8 @@ function Favourites() {
   <UserNav />
     <CenterDiv>
   <h1>Your <Reddata>Favourites</Reddata></h1>
-
     </CenterDiv>
   <GridImg>
-  
             {red.map((e)=>{
                 return <ImgSupp><Killimg src={e} /></ImgSupp>
             })}
