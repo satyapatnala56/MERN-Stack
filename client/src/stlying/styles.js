@@ -100,9 +100,10 @@ export const FooterDiv = styled.div`
 margin-top: 50px;
 /* border: 1px solid black; */
 display: flex;
-justify-content: space-around;
-background-color: #d4f7e8;
-padding: 20px;
+justify-content: space-between;
+background-color: #e9e9e9;
+/* padding: 20px; */
+padding: 20px 10%;
 `
 export const FlexRow = styled.tr`
 display: flex;

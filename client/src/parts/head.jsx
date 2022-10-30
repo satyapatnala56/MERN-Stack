@@ -31,7 +31,7 @@ function Head() {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto"></Nav>
         <Nav >
-          <Nav.Link href='seller' >Become a seller</Nav.Link>
+          {/* <Nav.Link href='seller' >Become a seller</Nav.Link> */}
           <Nav.Link onClick={handleClickOpen}>Sign In</Nav.Link>
           <Nav.Link onClick={handleClickSign}>
            Register

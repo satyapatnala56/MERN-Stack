@@ -8,33 +8,27 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-function UserNav() {
+function Header() {
   return (
-            <Navbar sticky="top" collapseOnSelect expand="lg" bg='dark' variant='dark'>
+    <Navbar sticky="top" collapseOnSelect expand="lg" bg='dark' variant='dark'>
     <Container>
-      <Navbar.Brand  href="/user">Take-Art-to-Heart</Navbar.Brand>
+      <Navbar.Brand  href="/admin">Take-Art-to-Heart</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
+          <Nav.Link href='auction'>Auction</Nav.Link>
+          <Nav.Link href='users'>Users</Nav.Link>
+          <Nav.Link href='arts'>Arts</Nav.Link>
         </Nav>
-        <Nav>
-          <Nav.Link href='user/home'>
-          <NotificationsNoneIcon color='inherit' title='Notifications' />
-          </Nav.Link>
-          <Nav.Link>
-          <MailOutlineIcon color='inherit' />
-            </Nav.Link>
-            <Nav.Link href='save'>
-          <FavoriteBorderIcon color='inherit' />
-            </Nav.Link>
-                <Dropdown align='end'>
+        <Nav >
+        <Dropdown align='end'>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
       <AccountCircleIcon color='inherit' />Karthik
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item href="profile">Profile</Dropdown.Item>
-        <Dropdown.Item href="myarts">My Arts</Dropdown.Item>
-        <Dropdown.Item href="#/action-1">Auction</Dropdown.Item>
+        <Dropdown.Item href="arts">Arts</Dropdown.Item>
+        <Dropdown.Item href="users">Users</Dropdown.Item>
+        <Dropdown.Item href="auction">Auction</Dropdown.Item>
         {/* <Dropdown.Item href="#/action-2">Become a Seller</Dropdown.Item> */}
         <Dropdown.Divider />
         <Dropdown.Item href="#/action-3">Help & Support</Dropdown.Item>
@@ -43,6 +37,7 @@ function UserNav() {
         <Dropdown.Item href="/">Log Out</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
+          {/* <Register open={sign} handleClose={handleSign} /> */}
         </Nav>
       </Navbar.Collapse>
     </Container>
@@ -50,4 +45,4 @@ function UserNav() {
   )
 }
 
-export default UserNav
+export default Header
