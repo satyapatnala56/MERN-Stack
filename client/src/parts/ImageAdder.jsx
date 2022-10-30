@@ -1,22 +1,30 @@
 import { Dialog } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from 'react-bootstrap/esm/Button'
+import UserContext from '../Context/Context'
 
-function ImageAdder({open,close,add,setAdd}) {
-    const [ima,setImage] = useState()
+function ImageAdder({open,close}) {
+    const {AddArt} = useContext(UserContext)
+    const [Pho,setPho] = useState('')
     const handleClose = () =>{
         close(false)
     }
   return (
     <div>
         <Dialog open={open} onClose={handleClose}>
-            <input type='text' onChange={(e)=>setImage(e.target.value)} />
-            {ima && <div>
-                <img src={ima} alt='Added one'/>
+            <input type='url' onChange={(e)=>{
+                setPho(e.target.value)
+            }} />
+
                 <Button variant='success' onClick={()=>{
-                    setAdd(...add,ima)
+                    AddArt({
+                        id : 10,
+                        name:'karthik',
+                        img:Pho
+                    })
+                    console.log(Pho)
+                    close(false)
                 }}>Add this</Button>
-                </div>}
         </Dialog>
     </div>
   )

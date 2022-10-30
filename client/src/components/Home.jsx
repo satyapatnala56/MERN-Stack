@@ -1,4 +1,5 @@
 import React from 'react'
+import { MostSold } from '../Context/data'
 import Footer from '../parts/Footer'
 import Naving from '../parts/head'
 import { Backdiv, Fulldiv, GetDown, Midh1, Reddata, ShadowDiv, Styledh1} from '../stlying/styles'
@@ -15,7 +16,7 @@ function Home() {
     <GetDown>
     <ShadowDiv>
         <Styledh1>Most Sold Out <Reddata>Arts</Reddata></Styledh1>
-      <Sliding />
+      <Sliding Data={MostSold}/>
       </ShadowDiv><br />
       <Footer />
       </GetDown>

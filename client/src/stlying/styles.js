@@ -101,7 +101,7 @@ margin-top: 50px;
 /* border: 1px solid black; */
 display: flex;
 justify-content: space-between;
-background-color: #e9e9e9;
+background-color: #d6ebda;
 /* padding: 20px; */
 padding: 20px 10%;
 `

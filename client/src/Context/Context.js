@@ -1,0 +1,36 @@
+import React, { createContext, useState } from 'react'
+import { Favourites, MyImages } from './data'
+
+export const UserContext = createContext()
+
+export function UserfnContext(props) {
+    const [User,setUser] = useState({
+      name:'karthik',
+      email:'karthik@1.its',
+      pass:'123',
+      ph:'14526411'
+    })
+    const [fav,setfav] = useState([...Favourites])
+    const [myarts,setMyarts] = useState([...MyImages])
+    const [Name,setName]= useState()
+
+    const UserSetter = (data)=>{
+        setUser(data)
+    }
+    const FavSetter = (data) =>{
+      setfav([...fav,data]);
+    }
+
+    const AddArt = (data) =>{
+      console.log(data)
+      setMyarts([...myarts,data]);
+    }
+
+   return (
+    <UserContext.Provider value={{User,UserSetter,Name,setName,fav,FavSetter,myarts,AddArt}}>
+            {props.children}
+    </UserContext.Provider>
+  )
+}
+
+export default UserContext

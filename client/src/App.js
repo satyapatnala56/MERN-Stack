@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
+import { UserfnContext } from "./Context/Context";
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Seller from './components/Seller';
 // import Signin from './components/SignIn';
@@ -17,13 +17,10 @@ import Settings from './components/Settings';
 
 function App() {
   return (
-    // <Backdiv>
-
+<UserfnContext>
      <Router>
       <Routes>
         <Route path='seller' element={<Seller />}/>
-        {/* <Route path='login' element={<Signin />}/> */}
-        {/* <Route path='register' element={<Register />}/> */}
         <Route path='profile' element={<Profile />} />
         <Route path='/' element={<Home />} exact/>
         <Route path='user' element={<User />} />
@@ -32,7 +29,8 @@ function App() {
         <Route path='settings' element={<Settings />} />
       </Routes>
      </Router>
-    // </Backdiv>
+
+    </UserfnContext>
   );
 }
 
