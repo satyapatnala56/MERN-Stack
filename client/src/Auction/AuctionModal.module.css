@@ -1,0 +1,7 @@
+.info{
+    display: flex;
+    margin: 10px 0;
+}
+.info label{
+    width: 150px;
+}

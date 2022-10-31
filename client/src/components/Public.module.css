@@ -1,0 +1,167 @@
+.align {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vw;
+  width: 70%;
+  margin-left: 7%;
+  /* transform: translateX(-70%); */
+  overflow-y: scroll;
+  background-color: rgb(239, 239, 239);
+}
+.public {
+  display: flex;
+}
+.card {
+  border-radius: 10px;
+  box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.2);
+  width: 60%;
+  height: fit-content;
+  margin: 10px;
+  background-color: white;
+  position: relative;
+  padding-bottom: 5px;
+}
+.topLine {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+}
+.topLine h6 {
+  margin: 10px 0;
+  margin-left: 6px;
+}
+.topLine p {
+  margin-top: 19px;
+  margin-left: 3px;
+  font-size: 0.8rem;
+}
+.icon {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-top: 2px;
+}
+.post {
+  padding: 10px;
+  padding-top: 0px;
+}
+.post img {
+  width: 100%;
+}
+.heart {
+  height: 15px;
+  width: 40px;
+  margin: 10px;
+  margin-top: 5px;
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+}
+.heart p {
+  padding: 0 2px;
+  margin-top: 15px;
+  font-weight: 500;
+}
+.options {
+  position: absolute;
+  top: 32px;
+  right: 15px;
+  height: 20px;
+  width: 20px;
+}
+.options:hover {
+  cursor: pointer;
+}
+.adOptions {
+  list-style: none;
+  position: absolute;
+  top: 55px;
+  right: 10px;
+  padding-left: 0px;
+  background-color: white;
+  width: 160px;
+  border: 1px solid black;
+  transition: 0.3s ease-out;
+}
+.adOptions > li {
+  width: 100%;
+  padding: 7px 15px;
+  border-bottom: 1px solid black;
+}
+.adOptions > li:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+.postContainer {
+  display: flex;
+  flex-direction: column;
+}
+.side {
+  height: fit-content;
+  width: 15%;
+  background-color: white;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: rgb(239, 239, 239);
+  position: fixed;
+  right: 3%;
+  top: 20%;
+}
+.side ul li img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.side ul {
+  list-style: none;
+  padding: 30px;
+}
+.side ul li {
+  padding: 5px 0;
+  color: black;
+  font-weight: 500;
+}
+.search {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 5px 0;
+  transition: 1s ease-out;
+  width: 100%;
+  background-color: rgb(239, 239, 239);
+}
+.search:focus {
+  border-bottom: none;
+}
+.search:hover::placeholder {
+  color: black;
+}
+.search:focus {
+  transition: 1s ease-out;
+  outline: none;
+  border-bottom: 1px solid #008b8b;
+}
+.anim {
+  position: relative;
+  transition: 1s ease-out;
+}
+.anim::after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  transition: 1s ease-out;
+}
+.anim:hover::after {
+  height: 1px;
+  width: 100%;
+  transition: 1s ease-out;
+  border-bottom: 1px solid #008b8b;
+}
+.hoverpen:hover {
+  cursor: pointer;
+}

@@ -13,6 +13,8 @@ import Profile from './components/Profile';
 import Favorite from './components/Favourites';
 import MyArts from './components/MyArts';
 import Settings from './components/Settings';
+import Public from './components/Public';
+import Auction from './Auction/Auction';
 // import Error from './components/Error'
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
         <Route path='save' element={<Favorite />} />
         <Route path='myarts' element={<MyArts />} />
         <Route path='settings' element={<Settings />} />
+        <Route path='public' element={<Public />} />
+        <Route path='auction' element={<Auction />} />
       </Routes>
      </Router>
 

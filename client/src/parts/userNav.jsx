@@ -19,6 +19,8 @@ function UserNav() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
+        <Dropdown.Item ><Link to='/public'>Public</Link></Dropdown.Item>
+        <Dropdown.Item ><Link to='/auction'>Auction</Link></Dropdown.Item>
         </Nav>
         <Nav>
           <Nav.Link href='user/home'>

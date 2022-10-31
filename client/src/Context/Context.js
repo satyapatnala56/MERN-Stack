@@ -6,7 +6,7 @@ export const UserContext = createContext()
 export function UserfnContext(props) {
     const [User,setUser] = useState({
       name:'karthik',
-      email:'karthik@1.its',
+      email:'karthik.m20@iiits.in',
       pass:'123',
       ph:'14526411'
     })
