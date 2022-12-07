@@ -5,10 +5,9 @@ import AuctionModal from "./AuctionModal";
 const AuctionCard = (props) => {
   const [aucModal, setAucModal] = useState(false);
 
-
   return (
     <div className={`card ${styles.cardEffects} ${styles.cardWidth}`}>
-      <AuctionModal show={aucModal} setShow={setAucModal} details={props.art}/>
+      <AuctionModal show={aucModal} setShow={setAucModal} details={props.art} bid={props.bid} />
       <div className={`card-info`}>
         <div className="card-front">
           <img src={props.art.url} className={styles.cardImage} alt="..." />
@@ -19,7 +18,13 @@ const AuctionCard = (props) => {
           </div>
         </div>
       </div>
-      <button type="button" className={styles.bidNow} onClick={() => setAucModal(true)}>
+      <button
+        type="button"
+        className={styles.bidNow}
+        onClick={() => {
+          setAucModal(true);
+        }}
+      >
         Bid Now
       </button>
     </div>

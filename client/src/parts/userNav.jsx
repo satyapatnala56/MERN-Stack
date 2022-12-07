@@ -7,17 +7,18 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Dropdown from "react-bootstrap/Dropdown";
-import UserContext from "../Context/Context";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../App.css";
 
 function UserNav() {
-  const { User } = useContext(UserContext);
+  const user = useSelector((state) => state.user.user);
+
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand>
-          <Link to="/user" className='nav-item'>
+          <Link to="/user" className="nav-item">
             Take-Art-to-Heart
           </Link>
         </Navbar.Brand>
@@ -51,7 +52,7 @@ function UserNav() {
             <Dropdown align="end">
               <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                 <AccountCircleIcon color="inherit" />
-                {User.name}
+                {user.username}
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>

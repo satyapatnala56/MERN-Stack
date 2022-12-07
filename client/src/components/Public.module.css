@@ -21,6 +21,7 @@
   background-color: white;
   position: relative;
   padding-bottom: 5px;
+  transition: all 1s ease-out;
 }
 .topLine {
   margin: 10px;
@@ -164,4 +165,8 @@
 }
 .hoverpen:hover {
   cursor: pointer;
+}
+.bottomLine p{
+  margin: 0 12px;
+  font-weight: 500;
 }

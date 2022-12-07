@@ -16,22 +16,27 @@ const AuctionModal = (props) => {
         <br />
         <div className={styles.info}>
           <label>Current Holder: </label>
-          <b>{props.details.itemDetails.currentHold}</b>
+          <b>{props.details.itemDetails.currentHolder}</b>
         </div>
         <div className={styles.info}>
           <label>Current Amount:</label>
-          <b>{props.details.itemDetails.currentBid}</b>
+          <b>{props.details.itemDetails.intial}</b>
         </div>
         <div className={styles.info}>
           <label>Bid Increment:</label>
-          <b>{props.details.itemDetails.bidIncrement}</b>
+          <b>{props.details.itemDetails.increment}</b>
         </div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={() => props.setShow(false)}>
           Close
         </Button>
-        <Button variant="primary" onClick={() => props.setShow(false)}>
+        <Button
+          variant="primary"
+          onClick={() => {
+            props.bid(props.details._id);
+          }}
+        >
           Bid Now
         </Button>
       </Modal.Footer>

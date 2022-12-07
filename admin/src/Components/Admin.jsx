@@ -1,84 +1,75 @@
-import React from 'react'
-import Header from '../Parts/Navbar'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import { Contain, LetsFlex } from '../Styles/styles';
-import { Typography } from '@mui/material';
-import AuctioningItems from './AuctioningItems';
+import React from "react";
+import Header from "../Parts/Navbar";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import { Contain, LetsFlex } from "../Styles/styles";
+import { Typography } from "@mui/material";
+import AuctioningItems from "./AuctioningItems";
+import styles from './Admin.module.css'
 
 function Admin() {
-  return (<div style={{backgroundColor:'#d1d1d1'}}>
-  <Header />
-  <Contain>
-  <Card style={{padding:20,backgroundColor:'rgb(133 133 133)',color:'#fbe697'}}>
-  <h1>Hello Admin !!</h1>
-  <p>Let's improve the productivity together.</p>
-  </Card>
-  <LetsFlex>
-    <Card style={{width:'80%'}}>
-      <CardContent>
-        <Typography variant='h5'>
-          Users
-        </Typography>
-        <Typography variant='caption' component='p'>
-        New Users : 56
-        </Typography> 
-        <Typography variant='caption' component='p'>
-        No of logins  : 256
-        </Typography>
-        <Typography variant='caption' component='p'>
-        User Reports : 5
-      </Typography>
-      <Typography variant='caption' component='p'>
-        Post Reports : 5
-      </Typography>
-      </CardContent>
-    </Card>
-    <Card style={{width:'80%'}}>
-      <CardContent>
-      <Typography variant='h5'>
-          Items at Auction
-        </Typography>
-      {/* Auctioned items */}
-      <Typography variant='caption' component='p'>
-        Total items : 6
-      </Typography>
-      <Typography variant='caption' component='p'>
-        Bidded atleast once : 4
-      </Typography>
-      <Typography variant='caption' component='p'>
-        No one bidded still : 2
-      </Typography>
-      <Typography variant='caption' component='p'>
-        Highest priced : $520
-      </Typography>
-      </CardContent>
-      </Card>
-    <Card style={{width:'80%'}}>
-      <CardContent>
-      <Typography variant='h5' >
-      Select Auction items
-      </Typography>
-      <Typography variant='caption' component='p'>
-        Usual no of items : 6
-      </Typography>
-      <Typography variant='caption' component='p'>
-        Already selected : 4
-      </Typography>
-      <Typography variant='caption' component='p'>
-        Available items : 34
-      </Typography>
-      <Typography variant='caption' component='p'>
-        Available time : 2:00 PM
-      </Typography>
-        </CardContent></Card>
-  </LetsFlex>
-  <AuctioningItems />
-  </Contain>
-  </div>)
+
+  
+
+  return (
+    <div style={{ backgroundColor: "#d1d1d1" }}>
+      <Header />
+      <Contain>
+        <Card
+          style={{
+            padding: 20,
+            backgroundColor: "rgb(133 133 133)",
+            color: "#fbe697",
+          }}
+        >
+          <h1>Hello Admin !!</h1>
+          <p>Let's improve the productivity together.</p>
+        </Card>
+        <LetsFlex>
+          <Card style={{ width: "80%" }}>
+            <CardContent>
+              <Typography variant="h5">Users</Typography>
+              <Typography variant="caption" component="p">
+                New Users : 56
+              </Typography>
+              <Typography variant="caption" component="p">
+                No of logins : 256
+              </Typography>
+              <Typography variant="caption" component="p">
+                User Reports : 5
+              </Typography>
+              <Typography variant="caption" component="p">
+                Post Reports : 5
+              </Typography>
+            </CardContent>
+          </Card>
+          <Card style={{ width: "80%" }}>
+            <CardContent>
+              <Typography variant="h5">Items at Auction</Typography>
+              {/* Auctioned items */}
+              <Typography variant="caption" component="p">
+                Total items : 6
+              </Typography>
+              <Typography variant="caption" component="p">
+                Bidded atleast once : 4
+              </Typography>
+              <Typography variant="caption" component="p">
+                No one bidded still : 2
+              </Typography>
+              <Typography variant="caption" component="p">
+                Highest priced : $520
+              </Typography>
+            </CardContent>
+          </Card>
+        </LetsFlex>
+        <AuctioningItems />
+        <button className={styles.add}>uwu</button>
+      </Contain>
+    </div>
+  );
 }
 
-export default Admin
+export default Admin;
 
 /*
 import * as React from 'react';

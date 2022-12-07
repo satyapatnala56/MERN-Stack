@@ -1,43 +1,28 @@
-import React from 'react'
-import ActionAreaCard from '../Parts/AreaCard'
-import Navbar from '../Parts/Navbar'
-import { Contain, LetsFlex } from '../Styles/styles'
-import Card from '@mui/material/Card';
-import { Typography } from '@mui/material';
-import Button from 'react-bootstrap/Button';
-import Table from './Table'
+import React, { useState } from "react";
+import Navbar from "../Parts/Navbar";
+import Card from "@mui/material/Card";
+import { Typography } from "@mui/material";
+import Button from "react-bootstrap/Button";
+import FormModal from "./FormModal";
 function Auction() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
-    <div  style={{backgroundColor:'#d1d1d1'}}>
+    <div style={{ backgroundColor: "#d1d1d1" }}>
       <Navbar />
 
-      <Contain>
-      <LetsFlex>
-    <ActionAreaCard />
-    <ActionAreaCard />
-    <ActionAreaCard />
-    </LetsFlex>   
-     <LetsFlex>
-    <ActionAreaCard />
-    {/* <ActionAreaCard /> */}
-    <ActionAreaCard />
-    </LetsFlex>
+      <Card style={{ margin: 20 }}>
+        <Typography variant="h5" style={{ padding: 20 }}>
+          Available arts for Auction
+        </Typography>
 
-    <Card style={{margin:20}}>
-      {/* <CardContent> */}
-      <Typography variant='h5' style={{padding:20}}>
-      Available arts for Auction
-      </Typography>
-      <Typography variant='caption'>
-      <Table />
-
-      </Typography>
-      <Button variant='success'>Add selected to Auction</Button>
-      {/* </CardContent> */}
-    </Card>
-      </Contain>
-        </div>
-  )
+        <Button variant="success" onClick={() => setShowForm(true)}>
+          Add Auction Item
+        </Button>
+        {showForm && <FormModal func={setShowForm} />}
+      </Card>
+    </div>
+  );
 }
 
-export default Auction
+export default Auction;

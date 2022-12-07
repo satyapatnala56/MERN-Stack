@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
 import Heart from "react-heart";
+import React, { useState} from "react";
 import styles from "./Public.module.css";
 import { ThreeDots } from "react-bootstrap-icons";
-// import { UserContext } from "../context/Context";
-// import PopUp from "./Modal/PopUp";
 
 const Post = (props) => {
   const [like, isLiked] = useState(false);
@@ -12,8 +10,6 @@ const Post = (props) => {
   const likeHandler = () => {
     isLiked((like) => !like);
   };
-
-  // const { user } = useContext(UserContext);
 
   return (
     <div className={styles.card}>
@@ -26,10 +22,12 @@ const Post = (props) => {
         <img src={props.data.image} alt="post" />
       </div>
       <div className={styles.bottomLine}>
-        <div className={styles.heart}>
+        <p>{props.data.description}</p>
+        {/*<div className={styles.heart}>
           <Heart isActive={like} onClick={likeHandler} />
           <p>{props.data.likes}</p>
         </div>
+  */}
       </div>
       <ThreeDots
         className={styles.options}
@@ -43,7 +41,7 @@ const Post = (props) => {
               <li>Blacklist this user</li>
             </>
           )} */}
-          <li>Block this user</li>
+          <li onClick={() => props.delete(props.data.id)}>Hide this post</li>
         </ul>
       )}
     </div>
