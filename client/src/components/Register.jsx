@@ -16,11 +16,24 @@ export default function Register({ open, handleClose }) {
   const [reg, setReg] = useState({});
 
   const HandleClick = (e) => {
-    console.log(reg)
+    console.log(reg);
+    if (
+      reg.name === undefined ||
+      reg.email === undefined ||
+      reg.pass === undefined ||
+      reg.ph === undefined
+    ) {
+      alert("Please fill all the fields");
+      return;
+    }
+    if (reg.pass !== reg.cpass) {
+      alert("Password and Confirm Password do not match");
+      return;
+    }
     UserSetter(reg);
     axios.post("http://localhost:5500/register", reg).then((res) => {
       console.log(res);
-      handleClose()
+      handleClose();
     });
   };
   return (
@@ -76,9 +89,7 @@ export default function Register({ open, handleClose }) {
             fullWidth
             variant="standard"
             onChange={(e) => {
-              if (reg.pass === e.target.value) {
-                console.log("fine");
-              }
+              setReg({ ...reg, cpass: e.target.value });
             }}
           />
           <br />

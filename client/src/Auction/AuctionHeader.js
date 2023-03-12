@@ -22,7 +22,7 @@ const AuctionHeader = (props) => {
         </p>
         <div>
           <h4>Want to participate in auction?</h4>
-          <a href="./register.html">
+          <a href="/">
             <button className="btn btn-primary">
               Register as a Bidder Now
             </button>

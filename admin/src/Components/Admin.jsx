@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Parts/Navbar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Contain, LetsFlex } from "../Styles/styles";
 import { Typography } from "@mui/material";
 import AuctioningItems from "./AuctioningItems";
-import styles from './Admin.module.css'
+import styles from "./Admin.module.css";
+import axios from "axios";
+import ReactCard from "./ReactCard";
 
 function Admin() {
+  const [items, getItems] = useState([]);
 
-  
+  useEffect(() => {
+    const fetchHandler = () => {
+      axios.get("http://localhost:5500/auction").then((res) => {
+        getItems(res.data);
+      });
+    };
+    fetchHandler();
+  }, []);
 
   return (
     <div style={{ backgroundColor: "#d1d1d1" }}>
@@ -62,7 +72,10 @@ function Admin() {
             </CardContent>
           </Card>
         </LetsFlex>
-        <AuctioningItems />
+        <h1>Current Auction Items</h1>
+        {items.map((item) => {
+          return <ReactCard data={item} key={item._id} />;
+        })}
         <button className={styles.add}>uwu</button>
       </Contain>
     </div>
