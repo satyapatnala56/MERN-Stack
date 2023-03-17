@@ -1,14 +1,16 @@
 const getDb = require('../utils/database').getDb;
 const mongodb = require('mongodb');
+const {GridFsStorage} = require('multer-gridfs-storage');
+const multer = require('multer');
 
 
 class Post{
-    constructor(userId, userName, icon, posted, imageUrl, likes, description, id){
+    constructor(userId, userName, icon, posted, file, likes, description, id){
         this.userId = userId;
         this.userName = userName;
         this.icon = icon;
         this.posted = posted;
-        this.imageUrl = imageUrl;
+        this.file = file;
         this.likes = likes;
         this.description = description;
         this._id = id ? new mongodb.ObjectId(id) : null;

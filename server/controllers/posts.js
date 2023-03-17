@@ -1,5 +1,7 @@
 const Post = require("../models/posts");
 
+
+
 exports.getPosts = (req, res, next) => {
   Post.fetchAll()
     .then((posts) => {
@@ -11,33 +13,35 @@ exports.getPosts = (req, res, next) => {
 };
 
 exports.savePost = (req, res, next) => {
-  const userId = req.body.userId;
-  const userName = req.body.userName;
-  const icon = req.body.icon;
-  const posted = req.body.posted;
-  const imageUrl = req.body.imageUrl;
-  const likes = req.body.likes;
-  const description = req.body.description;
-  const post = new Post(
-    userId,
-    userName,
-    icon,
-    posted,
-    imageUrl,
-    likes,
-    description
-  );
-  post
-    .save()
-    .then((result) => {
-      res.send({
-        sucess: true,
-      });
-    })
-    .catch((e) => {
-      res.send({
-        sucess: false,
-      });
-      console.log(e);
-    });
+  const obj = req.body.obj;
+  const userId = obj.userId;
+  const userName = obj.userName;
+  const icon = obj.icon;
+  const posted = obj.posted;
+  const file = req.file;
+  const likes = obj.likes;
+  const description = obj.description;
+  // const post = new Post(
+  //   userId,
+  //   userName,
+  //   icon,
+  //   posted,
+  //   imageUrl,
+  //   likes,
+  //   description
+  // );
+  // post
+  //   .save()
+  //   .then((result) => {
+  //     res.send({
+  //       sucess: true,
+  //     });
+  //   })
+  //   .catch((e) => {
+  //     res.send({
+  //       sucess: false,
+  //     });
+  //     console.log(e);
+  //   });
+  // res.send({ success: true });
 };

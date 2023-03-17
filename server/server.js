@@ -4,6 +4,8 @@ const homeRoutes = require("./routes/home");
 const cors = require("cors");
 const mongoConnect = require("./utils/database").mongoConnect;
 const app = express();
+const {GridFsStorage} = require('multer-gridfs-storage');
+const multer = require('multer')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
@@ -12,4 +14,5 @@ app.use(homeRoutes);
 
 mongoConnect(() => {
   app.listen(5500);
-});
+})
+
