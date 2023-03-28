@@ -121,9 +121,35 @@
         }
       }
     },
-    "/updateuser": {
+    "/adminlogin": {
       "post": {
         "tags": ["Authentication"],
+        "summary": "Post request for an admin account to login",
+        "description": "This endpoint will be used for admins to login to admin portal",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "password": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateuser": {
+      "post": {
+        "tags": ["User"],
         "summary": "Update user details",
         "description": "Send a post request with body containing email, username, password and contact number to update user details",
         "requestBody": {
@@ -146,6 +172,42 @@
                   },
                   "id": {
                     "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/view": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Get all users",
+        "description": "This endpoint is used for admin purposes to get list of all users",
+        "responses": {
+          "200": {
+            "description": "List of all Users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    },
+                    "contact number": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    }
                   }
                 }
               }
