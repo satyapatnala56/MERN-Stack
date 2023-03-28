@@ -18,8 +18,8 @@ export default function FormDialog({ open, handleClose }) {
   const dispatch = useDispatch();
 
   const HandleSign = () => {
+    console.log(12312);
     axios.post("http://localhost:5500/login", log).then((res) => {
-      console.log(res);
       if (res.data.status === true) {
         dispatch(userActions.setUser({isAuth: true, user: res.data.user}));
         navigate("user");

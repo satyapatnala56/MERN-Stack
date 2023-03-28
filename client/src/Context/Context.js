@@ -13,7 +13,7 @@ export function UserfnContext(props) {
   const [fav, setfav] = useState([...Favourites]);
   const [myarts, setMyarts] = useState([...MyImages]);
   const [Name, setName] = useState();
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
 
   const UserSetter = (data) => {
     setUser(data);

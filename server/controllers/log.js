@@ -4,9 +4,10 @@ exports.logUser = (req, res, next) => {
   User.findUser(req.body.email)
     .then((result) => {
       if (result.password === req.body.pass) {
+        req.session.user = result;
         res.send({status: true, user: result})
       } else {
-         res.send({succcess: false}) 
+         res.status(401).send({succcess: false}) 
       }
     })
     .catch((e) => {
@@ -27,3 +28,14 @@ exports.register = (req, res, next) => {
     res.send({response, done: 1});
   });
 };
+
+exports.updateUser = ((req, res, next) => {
+  let user = { ...req.body };
+  console.log(req.body);
+  let userObj = new User(user.username, user.email, user.password, user.mobile, user.id);
+  userObj.save()
+  .then((response) => {
+    console.log(response);
+    res.send({"success": true});
+  })
+})

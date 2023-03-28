@@ -1,6 +1,7 @@
 .auctionPic {
-  height: 100%;
-  width: 100%;
+  height: 80%;
+  width: 50%;
+  margin: auto;
 }
 .auction{
   background-image: linear-gradient(90deg, white, rgb(212, 191, 191));
