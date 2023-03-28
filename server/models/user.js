@@ -24,6 +24,16 @@ class User {
     });
   }
   static validate() {}
+  static fetchAll() {
+    const db = getDb();
+    return db
+      .collection("users")
+      .find()
+      .toArray()
+      .then((users) => {
+        return users;
+      });
+  }
   static findUser(email) {
     const db = getDb();
     return db
@@ -36,7 +46,7 @@ class User {
         console.log(e);
       });
   }
-  static findUsers(id){
+  static findUsers(id) {
     const db = getDb();
     let _iid = new mongodb.ObjectId(id);
     return db

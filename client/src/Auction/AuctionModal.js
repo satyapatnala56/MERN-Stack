@@ -20,11 +20,11 @@ const AuctionModal = (props) => {
         </div>
         <div className={styles.info}>
           <label>Current Amount:</label>
-          <b>{props.details.itemDetails.intial}</b>
+          <b>${props.details.itemDetails.intial}</b>
         </div>
         <div className={styles.info}>
           <label>Bid Increment:</label>
-          <b>{props.details.itemDetails.increment}</b>
+          <b>${props.details.itemDetails.increment}</b>
         </div>
       </Modal.Body>
       <Modal.Footer>

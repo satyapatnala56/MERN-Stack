@@ -54,7 +54,8 @@ exports.fetchFile = (req, res, next) => {
 
 exports.updateLike = (req, res, next) => {
   const id = req.params.id;
-  Post.updateLike(id)
+  const queries = req.query;
+  Post.updateLike(id, queries.likes)
     .then((result) => {
       res.send("success");
     })

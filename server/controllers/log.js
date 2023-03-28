@@ -39,3 +39,13 @@ exports.updateUser = ((req, res, next) => {
     res.send({"success": true});
   })
 })
+
+exports.displayUsers = (req, res, next) => {
+  User.fetchAll()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+}

@@ -66,11 +66,11 @@ class Post {
         });
     });
   }
-  static updateLike(id) {
+  static updateLike(id, likes) {
     const db = getDb();
-    db.collection("posts").updateOne(
+    return db.collection("posts").updateOne(
       { _id: mongodb.ObjectId(id) },
-      { $inc: { likes: 1 } }
+      { $set: { likes: likes } }
     );
   }
 }

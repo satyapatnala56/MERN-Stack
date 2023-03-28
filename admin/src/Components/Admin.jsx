@@ -11,6 +11,10 @@ import ReactCard from "./ReactCard";
 
 function Admin() {
   const [items, getItems] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [admins, setAdmins] = useState([]);
+  const [highest, setHighest] = useState(0);
 
   useEffect(() => {
     const fetchHandler = () => {
@@ -19,6 +23,48 @@ function Admin() {
       });
     };
     fetchHandler();
+  }, []);
+
+  useEffect(() => {
+    const fetchUsers = () => {
+      axios.get("http://localhost:5500/view").then((res) => {
+        setUsers(res.data);
+      });
+    };
+    fetchUsers();
+  }, []);
+
+  useEffect(() => {
+    let high = highest;
+    items.forEach((i, ind) => {
+      if (i.itemDetails.intial > high) {
+        high = i.itemDetails.intial;
+      }
+    });
+    if (high !== highest) setHighest(high);
+  }, [items]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch("http://localhost:5500/posts");
+      const data = await response.json();
+      setPosts((prev) => {
+        const newPosts = [...data];
+        return newPosts;
+      });
+    };
+    fetchPosts();
+  }, []);
+
+  useEffect(() => {
+    const fetchAdmins = async () => {
+      console.log(22);
+      const response = await fetch("http://localhost:5500/admins");
+      const data = await response.json();
+      console.log(data);
+      setAdmins(data);
+    };
+    fetchAdmins();
   }, []);
 
   return (
@@ -40,91 +86,52 @@ function Admin() {
             <CardContent>
               <Typography variant="h5">Users</Typography>
               <Typography variant="caption" component="p">
-                New Users : 56
+                Total Users : {users.length > 0 ? users.length : "Loading..."}
               </Typography>
               <Typography variant="caption" component="p">
-                No of logins : 256
-              </Typography>
-              <Typography variant="caption" component="p">
-                User Reports : 5
-              </Typography>
-              <Typography variant="caption" component="p">
-                Post Reports : 5
+                Users blacklisted: 0
               </Typography>
             </CardContent>
           </Card>
           <Card style={{ width: "80%" }}>
             <CardContent>
-              <Typography variant="h5">Items at Auction</Typography>
+              <Typography variant="h5">Auction Items</Typography>
               {/* Auctioned items */}
               <Typography variant="caption" component="p">
-                Total items : 6
+                Total items : {items.length > 0 ? items.length : "Loading..."}
               </Typography>
               <Typography variant="caption" component="p">
-                Bidded atleast once : 4
+                Highest priced : ${highest}
               </Typography>
               <Typography variant="caption" component="p">
-                No one bidded still : 2
-              </Typography>
-              <Typography variant="caption" component="p">
-                Highest priced : $520
+                Items Sold: 0
               </Typography>
             </CardContent>
           </Card>
         </LetsFlex>
-        <h1>Current Auction Items</h1>
-        {items.map((item) => {
-          return <ReactCard data={item} key={item._id} />;
-        })}
-        <button className={styles.add}>uwu</button>
+        <LetsFlex>
+          <Card style={{ width: "80%" }}>
+            <CardContent>
+              <Typography variant="h5">Public Arts</Typography>
+              {/* Auctioned items */}
+              <Typography variant="caption" component="p">
+                Total Uploads : {posts.length > 0 ? posts.length : "Loading..."}
+              </Typography>
+            </CardContent>
+          </Card>
+          <Card style={{ width: "80%" }}>
+            <CardContent>
+              <Typography variant="h5">Admins</Typography>
+              {/* Auctioned items */}
+              <Typography variant="caption" component="p">
+                Admins : {admins.length > 0 ? admins.length : "Loading..."}
+              </Typography>
+            </CardContent>
+          </Card>
+        </LetsFlex>
       </Contain>
     </div>
   );
 }
 
 export default Admin;
-
-/*
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
-
-export default function BasicCard() {
-  return (
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
-}
-*/

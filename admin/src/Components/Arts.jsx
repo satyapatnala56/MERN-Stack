@@ -5,7 +5,7 @@ function Arts() {
   return (
     <div>
       <Navbar />
-      <h1>Arts</h1>
+      <h1>Public Arts</h1>
     </div>
   )
 }

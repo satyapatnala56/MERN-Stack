@@ -16,7 +16,7 @@ const Auction = () => {
 
   useEffect(() => {
     const fetchAuctionItems = () => {
-      axios.get("http://localhost:5500/auction").then((data) => {
+      axios.get("http://localhost:5500/auctionItems").then((data) => {
         console.log(data);
         setArts(data.data);
       });

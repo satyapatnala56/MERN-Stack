@@ -31,7 +31,14 @@ const Post = (props) => {
 
   const likeHandler = () => {
     setLike((like) => !like);
-    setLikeCounter((prev) => (like ? prev - 1 : prev + 1));
+    setLikeCounter((prev) => {
+      const newCount = like ? prev - 1 : prev + 1;
+      const res = axios.get(
+        `http://localhost:5500/post/updatelike/${props.data._id}?likes=${newCount}`
+      );
+      console.log(res);
+      return newCount;
+    });
   };
   return (
     <div className={styles.card}>

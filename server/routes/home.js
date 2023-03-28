@@ -12,6 +12,7 @@ const updateItem = require("../controllers/auction").updateItem;
 const fetchAll = require("../controllers/storage").fetchAll;
 const postControllers = require("../controllers/posts");
 const auctionControllers = require("../controllers/auction");
+const adminControllers = require('../controllers/admin')
 const { GridFsStorage } = require("multer-gridfs-storage");
 const multer = require("multer");
 
@@ -35,11 +36,7 @@ router.get("/profile", fetchAll);
 
 router.get("/auction", getItems);
 
-router.get("/view", displayUsers);
-
-router.get("/updateItem/:itemid", updateItem);
-
-router.post("/add-user", addUser);
+router.get("/view", userController.displayUsers);
 
 router.post("/login", userController.logUser);
 
@@ -53,8 +50,6 @@ router.post("/register", register);
 
 router.post("/post", upload.single("file"), postControllers.savePost);
 
-router.post("/post", () => {});
-
 router.get("/post/:fileName", postControllers.fetchFile);
 
 router.get("/posts", postControllers.getPosts);
@@ -66,5 +61,9 @@ router.post("/auction", auctionControllers.addItem);
 router.get("/auctionItems", auctionControllers.getItems);
 
 router.post("/updateItem", auctionControllers.updateItem);
+
+router.post('/adminlogin', adminControllers.logAdmin)
+
+router.get('/admins', adminControllers.admins)
 
 module.exports = router;

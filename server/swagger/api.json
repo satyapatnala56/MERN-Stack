@@ -121,6 +121,39 @@
         }
       }
     },
+    "/updateuser": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "Update user details",
+        "description": "Send a post request with body containing email, username, password and contact number to update user details",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "contact number": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/posts": {
       "get": {
         "tags": ["Post"],
