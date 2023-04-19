@@ -11,7 +11,7 @@ import AuctionHeader from "./AuctionHeader";
 const Auction = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
-
+  const socket = useSelector((state) => state.user.socket);
   const [arts, setArts] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,14 @@ const Auction = () => {
       });
     };
     fetchAuctionItems();
-  }, []);
+    socket.on('auction-update', data => {
+      if(data.action === 'update'){
+        console.log('i am listening')
+        fetchAuctionItems()
+      }
+    })
+  }, [socket]);
+
 
   const handleBid = (id) => {
     const art = arts.findIndex((art) => art._id === id);

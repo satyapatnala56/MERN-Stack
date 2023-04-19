@@ -21,7 +21,6 @@ import Auction from "./Auction/Auction";
 function App() {
   const authState = useSelector((state) => state.user.isAuth);
   console.log(authState);
-
   
 
   return (

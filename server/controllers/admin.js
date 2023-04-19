@@ -12,7 +12,7 @@ exports.logAdmin = (req, res, next) => {
       } else {
         res.send({ success: false });
       }
-    })
+    }) 
     .catch((err) => {
       console.log(err);
     });

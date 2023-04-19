@@ -1,4 +1,5 @@
 const Post = require("../models/posts");
+const io = require('../socket');
 
 exports.getPosts = (req, res, next) => {
   Post.fetchAll()
@@ -32,6 +33,7 @@ exports.savePost = (req, res, next) => {
   post
     .save()
     .then((result) => {
+      io.getIO().emit('posts', {action: 'create', post})
       res.send({
         sucess: true,
       });
@@ -42,7 +44,6 @@ exports.savePost = (req, res, next) => {
       });
       console.log(e);
     });
-  next();
 };
 
 exports.fetchFile = (req, res, next) => {

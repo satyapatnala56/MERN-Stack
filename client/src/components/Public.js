@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 
 const Public = () => {
   const user = useSelector((state) => state.user.user);
+  const socket = useSelector((state) => state.user.socket);
+
 
   const [post, setPost] = useState(false);
   const [posts, setPosts] = useState([]);
@@ -24,6 +26,12 @@ const Public = () => {
       });
     };
     fetchPosts();
+    socket.on('posts', data => {
+      console.log('asdwad')
+      if(data.action === 'create'){
+        fetchPosts()
+      }
+    })
   }, []);
 
   const postModalHandler = (e) => {
@@ -45,7 +53,7 @@ const Public = () => {
   };
 
   return (
-    <>
+    <div>
       <UserNav />
       <div className={styles.public}>
         <div className={`${styles.align}`}>
@@ -78,7 +86,7 @@ const Public = () => {
           <PostModal change={setPost} add={addPostHandler} len={posts.length} />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

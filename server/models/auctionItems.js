@@ -10,7 +10,7 @@ class Items {
     this.itemDetails = itemDetails;
     this._id  = id ? new mongodb.ObjectId(id) : null;
   }
-
+ 
   save() {
     const db = getDb();
     let mongoFunc;

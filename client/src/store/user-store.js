@@ -1,10 +1,12 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import openSocket from "socket.io-client";
 
 const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
     isAuth: false,
+    socket: openSocket("http://localhost:5500"),
   },
   reducers: {
     setUser: (state, action) => {
@@ -14,7 +16,7 @@ const userSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.isAuth = false;
-    },
+    }
   },
 });
 

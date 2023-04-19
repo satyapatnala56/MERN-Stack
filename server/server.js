@@ -12,12 +12,15 @@ const morgan = require("morgan");
 const app = express();
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger/api.json");
+const helmet = require("helmet");
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(coookieParser());
 app.use(express.json());
 app.use(cors());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(helmet())
 
 
 const mongoDbURI= "mongodb+srv://galaxy:inCiK9wH4mg6PdyM@cluster0.m7suo.mongodb.net/myFirstDatabase?w=majority"
@@ -36,11 +39,11 @@ app.use(sessions({
 }))
 
 
-const logStream = rfs.createStream("storage.log", {
-  interval: "1d",
-  path: path.join(__dirname, "logs"),
-});
-app.use(morgan("combined", { stream: logStream, immediate: true}));
+// const logStream = rfs.createStream("storage.log", {
+//   interval: "1d",
+//   path: path.join(__dirname, "logs"),
+// });
+// app.use(morgan("combined", { stream: logStream, immediate: true}));
 
 app.use('*', (req, res, next) => {
   next()
@@ -49,5 +52,9 @@ app.use('*', (req, res, next) => {
 app.use(homeRoutes);
 
 mongoConnect(() => {
-  app.listen(5500);
+  const server  = app.listen(5500);
+  const io = require('./socket').init(server)
+  io.on('connection', socket => {
+    console.log('Client connected')
+  })
 });

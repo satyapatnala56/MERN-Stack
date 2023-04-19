@@ -1,5 +1,5 @@
 const Items = require("../models/auctionItems");
-
+const socket = require("../socket");
 
 exports.addItem = (req, res, next) => {
   const current = req.body.ini;
@@ -11,7 +11,7 @@ exports.addItem = (req, res, next) => {
   const itemDetails = {
     intial: current,
     increment: inc,
-    currentHolder: 'No bids yet',
+    currentHolder: "No bids yet",
   };
   const item = new Items(title, artist, desc, url, itemDetails);
   item
@@ -27,7 +27,7 @@ exports.addItem = (req, res, next) => {
       });
       console.log(e);
     });
-}
+};
 
 exports.updateItem = (req, res, next) => {
   const current = req.body.itemDetails.intial;
@@ -44,19 +44,14 @@ exports.updateItem = (req, res, next) => {
   let id = req.body._id;
   Items.findById(id)
     .then((item) => {
-      let newItem = new Items(
-        title,
-        artist,
-        desc,
-        url,
-        itemDetails,
-        item._id
-      );
+      let newItem = new Items(title, artist, desc, url, itemDetails, item._id);
       newItem
         .save()
-        .then()
+        .then((result) => {
+          socket.getIO().emit("auction-update", { action: "update" });
+        })
         .catch((e) => console.log(e));
-      res.send('Done')
+      res.send("Done");
     })
     .catch((e) => console.log(e));
 };
