@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 
 function Settings() {
   const user = useSelector((state) => state.user.user);
+  const backend = useSelector((state) => state.user.backend);
   const dispatch = useDispatch();
 
   const nameRef = useRef(null);
@@ -25,7 +26,7 @@ function Settings() {
       password: user.password,
       id: user._id,
     };
-    axios.post("http://localhost:5500/updateuser", obj).then((res) => {
+    axios.post(`${backend}/updateuser`, obj).then((res) => {
       console.log(res);
     });
     dispatch(userActions.setUser({ isAuth: true, user: obj }));

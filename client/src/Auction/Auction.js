@@ -12,11 +12,12 @@ const Auction = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
   const socket = useSelector((state) => state.user.socket);
+  const backend = useSelector((state) => state.user.backend);
   const [arts, setArts] = useState([]);
 
   useEffect(() => {
     const fetchAuctionItems = () => {
-      axios.get("http://localhost:5500/auctionItems").then((data) => {
+      axios.get(`${backend}/auctionItems`).then((data) => {
         console.log(data);
         setArts(data.data);
       });
@@ -38,7 +39,7 @@ const Auction = () => {
     bid.itemDetails.intial += bid.itemDetails.increment;
     bid.itemDetails.currentHolder = user.username;
     arts[art] = bid;
-    axios.post("http://localhost:5500/updateItem", bid)
+    axios.post(`${backend}/updateItem`, bid)
     .then((data) => {
       console.log(data);
       navigate("/auction");

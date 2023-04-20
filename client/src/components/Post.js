@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Public.module.css";
 import { ThreeDots, Heart, HeartFill } from "react-bootstrap-icons";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Post = (props) => {
   const [like, setLike] = useState(false);
@@ -9,10 +10,12 @@ const Post = (props) => {
   const [file, setFile] = useState(null);
   const [likeCounter, setLikeCounter] = useState(Number(props.data.likes));
 
+  const backend = useSelector((state) => state.user.backend);
+
   useEffect(() => {
     const fetchFile = async () => {
       const res = await axios.get(
-        `http://localhost:5500/post/${props.data.file}`
+        `${backend}/post/${props.data.file}`
       );
       setFile(res.data);
     };

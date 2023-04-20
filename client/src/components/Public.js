@@ -10,14 +10,14 @@ import { useSelector } from "react-redux";
 const Public = () => {
   const user = useSelector((state) => state.user.user);
   const socket = useSelector((state) => state.user.socket);
-
+  const backend = useSelector((state) => state.user.backend);
 
   const [post, setPost] = useState(false);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch("http://localhost:5500/posts");
+      const response = await fetch(`${backend}/posts`);
       const data = await response.json();
       console.log(data)
       setPosts((prev) => {

@@ -8,13 +8,14 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useContext } from "react";
 import UserContext from "../Context/Context";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 export default function Register({ open, handleClose }) {
   axios.defaults.withCredentials = false;
   const { UserSetter } = useContext(UserContext);
   // const navigate = useNavigate()
   const [reg, setReg] = useState({});
-
+  const backend = useSelector((state) => state.user.backend);
   const HandleClick = (e) => {
     console.log(reg);
     if (
@@ -31,7 +32,7 @@ export default function Register({ open, handleClose }) {
       return;
     }
     UserSetter(reg);
-    axios.post("http://localhost:5500/register", reg).then((res) => {
+    axios.post(`${backend}/register`, reg).then((res) => {
       console.log(res);
       handleClose();
     });

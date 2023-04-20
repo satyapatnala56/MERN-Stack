@@ -6,10 +6,12 @@ import axios from "axios";
 
 const PostModal = (props) => {
   const user = useSelector((state) => state.user.user);
+  const backend = useSelector((state) => state.user.backend);
 
   const inputRef = useRef(null);
   const descRef = useRef(null);
   const tagsRef = useRef(null);
+
 
   const [image, setImage] = useState(null);
 
@@ -44,7 +46,7 @@ const PostModal = (props) => {
     const randomId = Math.floor(Math.random() * 100000000);
     formData.append("fileId", `file.originalname${randomId}`);
     console.log(formData.file);
-    axios.post("http://localhost:5500/post", formData).then((res) => {
+    axios.post(`${backend}/post`, formData).then((res) => {
       console.log(res);
     });
     props.change(false);

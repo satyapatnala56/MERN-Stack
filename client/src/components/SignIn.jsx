@@ -9,17 +9,18 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useNavigate } from "react-router-dom";
 import { userActions } from "../store/user-store";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function FormDialog({ open, handleClose }) {
   const navigate = useNavigate();
   const [log, setLog] = useState();
 
   const dispatch = useDispatch();
+  const backend = useSelector((state) => state.user.backend);
 
   const HandleSign = () => {
     console.log(12312);
-    axios.post("http://localhost:5500/login", log).then((res) => {
+    axios.post(`${backend}/login`, log).then((res) => {
       if (res.data.status === true) {
         dispatch(userActions.setUser({isAuth: true, user: res.data.user}));
         navigate("user");
