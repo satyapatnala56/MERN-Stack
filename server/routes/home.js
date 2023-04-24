@@ -52,7 +52,7 @@ router.post("/post", upload.single("file"), postControllers.savePost);
 
 router.get("/post/:fileName", postControllers.fetchFile);
 
-router.get("/posts", postControllers.getPosts);
+router.get("/posts", postControllers.getPosts); 
 
 router.get('/post/updatelike/:id', postControllers.updateLike)
 

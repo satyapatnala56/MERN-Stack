@@ -1,14 +1,24 @@
 const Post = require("../models/posts");
-const io = require('../socket');
+const io = require("../socket");
+const redis = require("redis");
+const client = redis.createClient();
 
-exports.getPosts = (req, res, next) => {
-  Post.fetchAll()
-    .then((posts) => {
-      res.send(posts);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+client.connect();
+exports.getPosts = async (req, res, next) => {
+  const posts = await client.get("posts");
+  let postsArray = await JSON.parse(posts);
+  if (postsArray?.length > 0) {
+    res.send(postsArray);
+  } else {
+    Post.fetchAll()
+      .then(async (posts) => {
+        await client.set("posts", JSON.stringify(posts));
+        res.send(posts);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
 };
 
 exports.savePost = (req, res, next) => {
@@ -33,7 +43,8 @@ exports.savePost = (req, res, next) => {
   post
     .save()
     .then((result) => {
-      io.getIO().emit('posts', {action: 'create', post})
+      io.getIO().emit("posts", { action: "create", post });
+      client.del("posts")
       res.send({
         sucess: true,
       });
@@ -46,11 +57,17 @@ exports.savePost = (req, res, next) => {
     });
 };
 
-exports.fetchFile = (req, res, next) => {
+exports.fetchFile = async(req, res, next) => {
   const fileName = req.params.fileName;
-  Post.fetchFile(fileName, (file) => {
-    res.send(file);
-  });
+  const image = await client.get(fileName)
+  if(image === null){
+    Post.fetchFile(fileName, async(file) => {
+      await client.set(fileName, file)
+      res.send(file);
+    });
+  }else{
+    res.send(image)
+  }
 };
 
 exports.updateLike = (req, res, next) => {
