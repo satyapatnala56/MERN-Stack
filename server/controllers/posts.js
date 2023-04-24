@@ -1,7 +1,7 @@
 const Post = require("../models/posts");
 const io = require("../socket");
 const redis = require("redis");
-const client = redis.createClient();
+const client = redis.createClient("redis://red-ch3cr4rh4hsum42u29k0:6379");
 
 client.connect();
 exports.getPosts = async (req, res, next) => {
