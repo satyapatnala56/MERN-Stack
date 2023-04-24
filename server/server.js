@@ -58,3 +58,5 @@ mongoConnect(() => {
     console.log('Client connected')
   })
 });
+
+module.exports= app;
