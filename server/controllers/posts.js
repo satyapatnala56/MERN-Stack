@@ -4,7 +4,7 @@ const redis = require("redis");
 const client = redis.createClient();
 
 client
-  .connect("redis://red-ch3cr4rh4hsum42u29k0:6379")
+  .connect("rediss://red-ch3cr4rh4hsum42u29k0:GAaIP0IwCwOkHlnyfgMfdSsdqrVJHrEQ@singapore-redis.render.com:6379")
   .then((result) => {
     console.log("Redis Connected");
   })
