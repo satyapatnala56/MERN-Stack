@@ -6,8 +6,8 @@ const userSlice = createSlice({
   initialState: {
     user: null,
     isAuth: false,
-    socket: openSocket("http://localhost:5500"),
-    backend: "http://localhost:5500"
+    socket: openSocket("https://backend-wbd-node.onrender.com"),
+    backend: "https://backend-wbd-node.onrender.com"
   },
   reducers: {
     setUser: (state, action) => {
