@@ -25,7 +25,7 @@ describe("testing", () => {
         res.body.length.should.be.greaterThan(0);
         done();
       });
-  }).timeout(4000);
+  });
   it("auction items should be fetched", (done) => {
     chai
       .request(app)
@@ -35,7 +35,7 @@ describe("testing", () => {
         res.body.length.should.be.greaterThan(0);
         done();
       });
-  }).timeout(4000);
+  });
   it("should successsfully fetch a file", (done) => {
     chai
       .request(app)
@@ -44,5 +44,5 @@ describe("testing", () => {
         assert.equal(res.status, 200);
         done();
       });
-  }).timeout(4000);
+  });
 });
