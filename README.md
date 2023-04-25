@@ -10,7 +10,5 @@ For running server
 -- npm install
 -- npm start
 
-For running admin
--- cd admin
--- npm install
--- npm start
+
+Client Application Host Link: "https://frontend-wbd.onrender.com/"
