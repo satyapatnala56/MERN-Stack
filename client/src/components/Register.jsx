@@ -9,6 +9,7 @@ import { useContext } from "react";
 import UserContext from "../Context/Context";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { TailSpin } from "react-loader-spinner";
 
 export default function Register({ open, handleClose }) {
   axios.defaults.withCredentials = false;
@@ -16,8 +17,9 @@ export default function Register({ open, handleClose }) {
   // const navigate = useNavigate()
   const [reg, setReg] = useState({});
   const backend = useSelector((state) => state.user.backend);
+  const [loaded, setLoaded] = useState(false);
   const HandleClick = (e) => {
-    console.log(reg);
+    setLoaded(true);
     if (
       reg.name === undefined ||
       reg.email === undefined ||
@@ -34,14 +36,27 @@ export default function Register({ open, handleClose }) {
     UserSetter(reg);
     axios.post(`${backend}/register`, reg).then((res) => {
       console.log(res);
+      setLoaded(false);
       handleClose();
     });
   };
   return (
     <div>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle style={{ textAlign: "center" }}>
+        <DialogTitle
+          style={{
+            textAlign: "center",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <h1>Register</h1>
+          {loaded && (
+            <div style={{ margin: "0 5px" }}>
+              <TailSpin height="40" width="40" color="#00BFFF" radius="1" />
+            </div>
+          )}
         </DialogTitle>
         &nbsp;&nbsp;&nbsp; Glad to Have you here !!! Welcome to Take to Heart
         &nbsp;&nbsp;&nbsp;&nbsp;
