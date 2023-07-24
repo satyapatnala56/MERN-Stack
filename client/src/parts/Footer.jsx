@@ -10,32 +10,21 @@ function Footer() {
         <FlexDiv style={{ justifyContent: "space-between" }}>
           <div>
             <Typography variant="caption" component="p">
-              Vishnu Priya
+              Satya Patnala
             </Typography>
             <Typography variant="caption" component="p">
-              Sreekar
+              Harshini Sai
             </Typography>
             <Typography variant="caption" component="p">
-              Satya Kiran
-            </Typography>
-          </div>
-          <div>
-            <Typography variant="caption" component="p">
-              Harshini sai
-            </Typography>
-            <Typography variant="caption" component="p">
-              Afreen Shaik
-            </Typography>
-            <Typography variant="caption" component="p">
-              Shaik Vazeer Ahamed
+              Karthik M
             </Typography>
           </div>
           <div>
             <Typography variant="caption" component="p">
-              Viswa Teja
+              Nindali Teja
             </Typography>
             <Typography variant="caption" component="p">
-              Madhava
+              Abhilaash
             </Typography>
           </div>
         </FlexDiv>
